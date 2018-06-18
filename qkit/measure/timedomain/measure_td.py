@@ -440,6 +440,10 @@ class Measure_td(object):
         t.start()
         self._hdf.close_file()
         waf.close_log_file(self._log)
+        try:
+            self.readout.cleanup()
+        except AttributeError:
+            pass
         
     def set_plot_comment(self, comment):
         '''
